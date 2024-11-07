@@ -1,0 +1,7 @@
+[{"id":"c98e6fe3-7986-11eb-9b46-98fa9b64e75b","name":"iPhone 12","description":"Base variant of iPhone 12","price":80000,"isAvailable":true},
+ {"id":"e7f31219-7986-11eb-bd65-98fa9b64e75b","name":"iPhone 12 Pro","description":"Pro variant of iPhone 12","price":100000,"isAvailable":false},
+ {"id":"f82fa5ec-7986-11eb-a8e3-98fa9b64e75b","name":"iPhone 12 Pro Max","description":"Pro max variant of iPhone 12","price":120000,"isAvailable":true},
+ {"id":"","name":"","description":"","price":0,"isAvailable":false},
+ {"id":"f82fa5ec-7986-11eb-a8e3-98fa9b64e75b","name":"iPhone 12 Pro Max","description":"Pro max variant of iPhone 12","price":120000,"isAvailable":true},
+ {"id":"xxxxxxxxxxxxxxxxxxxxxxxxxxx","name":"aaaaaaaaaaaaaaaaaaaaaaaa","description":"bbbbbbbbbbbbbbbbbbbba","price":1e+31,"isAvailable":true},
+ {"id":"123456","name":"this is a test","description":"bbbbbbbbbbbbbbbbbbbba","price":1e+31,"isAvailable":true}]

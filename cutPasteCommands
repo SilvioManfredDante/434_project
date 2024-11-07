@@ -1,0 +1,10 @@
+// download of postman to test application : https://www.postman.com/downloads/
+
+   sudo apt-get update
+   sudo apt install golang-go
+   go mod init github.com/HelloWorld/goProductAPI
+   go mod tidy
+   sudo apt install golang-github-gorilla-mux-dev
+   mkdir data
+   cd data
+   vi data.json
