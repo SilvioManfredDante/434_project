@@ -1,0 +1,62 @@
+
+
+mkdir kafka
+cd kafka
+
+
+# update: 
+curl -o kafka_2.13-3.5.2.tgz  https://dlcdn.apache.org/kafka/3.5.2/kafka_2.13-3.5.2.tgz
+
+curl -o kafka_2.13-3.5.2.tgz  https://dlcdn.apache.org/kafka/3.5.2/kafka_2.13-3.5.2.tgz
+ls
+tar -xzf    kafka_2.13-3.5.2.tgz
+
+
+
+cd kafka_2.13-3.5.2/
+sudo apt update
+sudo apt install default-jre
+java -version
+
+#### from kafka.apache.org/quickstart
+
+# Start the ZooKeeper service
+bin/zookeeper-server-start.sh config/zookeeper.properties
+# Start the Kafka broker service
+$ bin/kafka-server-start.sh config/server.properties
+
+
+bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
+bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+
+sudo apt install golang-go
+
+vi cons.go
+vi prod.go
+
+go mod init kafka-golang
+go mod tidy
+
+go run prod.go
+go run cons.go
+
+
+
+
+
+
+
+
+
+
+
+
+##### old versions
+##### old versions - did not download appropriately any more
+
+
+########### curl -o  kafka_2.13-3.4.0.tgz http://dlcdn.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz
+##############tar -xzf kafka_2.13-3.4.0.tgz
+
+#### reference " https://linuxhint.com/apache-kafka-consumer-example-golang/
+https://stackoverflow.com/questions/39643013/gzip-stdin-not-in-gzip-format-tar-child-returned-status-1-tar-error-is-not-r  -> due to antequated version of kafka...
