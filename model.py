@@ -13,6 +13,9 @@ def load_and_preprocess_data(url):
     # Load the dataset
     df = pd.read_csv(url)
     
+    # Strip spaces from column names
+    df.columns = df.columns.str.strip()
+    
     # Handle missing and infinite values
     df.fillna(0, inplace=True)
     df.replace([-np.inf, np.inf], 0, inplace=True)
@@ -21,10 +24,15 @@ def load_and_preprocess_data(url):
     df['Salary'] = df['Salary'].map(lambda x: x.replace(',', '')).astype(int)
     df['Cap Hit'] = df['Cap Hit'].map(lambda x: x.replace(',', '')).astype(int)
     
-    # Drop unnecessary columns
+    # Drop unnecessary columns (assuming 'Year' and other non-essential columns)
     df = df.iloc[:, 0:-6]
+    
+    # Encode categorical columns like 'Team'
     df['Team'] = LabelEncoder().fit_transform(df['Team'])
-    df.drop('Year', axis=1, inplace=True)
+    
+    # Drop the 'Year' column if exists
+    if 'Year' in df.columns:
+        df.drop('Year', axis=1, inplace=True)
     
     # Scale numerical columns
     for col in df.columns[2:-2]:
@@ -36,6 +44,7 @@ def train_model(X_train, y_train, model_path='model.pkl'):
     # Train a RandomForestRegressor model
     model = RandomForestRegressor()
     model.fit(X_train.select_dtypes(include=[float, int]), y_train)
+    
     # Save the trained model
     joblib.dump(model, model_path)
     print(f"Model saved to {model_path}")
@@ -51,6 +60,11 @@ def load_model(model_path='model.pkl'):
         return None
 
 def predict_salary(model, df, first_name, last_name):
+    # Ensure the columns for first and last name exist
+    if 'First Name' not in df.columns or 'Last Name' not in df.columns:
+        print("Error: 'First Name' or 'Last Name' columns are missing in the dataset.")
+        return None
+    
     # Find the player by first and last name
     player_row = df[(df['First Name'] == first_name) & (df['Last Name'] == last_name)]
     
@@ -96,5 +110,5 @@ def main():
         return prediction
 
 # Run the main function
-#if __name__ == "_main_":
-main()
+if __name__ == "__main__":
+    main()
