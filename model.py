@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 url = 'https://raw.githubusercontent.com/SilvioManfredDante/434_project/main/IceHockey2023VsSalaryVsPlayer.csv'
 
-print('hello world')
+print('Welcome To The Model')
 
 def load_and_preprocess_data(url):
     # Load the dataset
@@ -96,5 +96,5 @@ def main():
         return prediction
 
 # Run the main function
-if __name__ == "_main_":
-    main()
+#if __name__ == "_main_":
+main()
