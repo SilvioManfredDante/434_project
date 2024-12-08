@@ -59,17 +59,14 @@ def load_model(model_path='model.pkl'):
         print("No pre-saved model found. Training a new one.")
         return None
 
-def predict_salary(model, df, first_name, last_name):
-    # Ensure the columns for first and last name exist
-    if 'First Name' not in df.columns or 'Last Name' not in df.columns:
-        print("Error: 'First Name' or 'Last Name' columns are missing in the dataset.")
-        return None
+def predict_salary(model, df, player):
+
     
     # Find the player by first and last name
-    player_row = df[(df['First Name'] == first_name) & (df['Last Name'] == last_name)]
+    player_row = df[(df['Player'] == player)]
     
     if player_row.empty:
-        print(f"Player {first_name} {last_name} not found.")
+        print(f"Player {player} not found.")
         return None
     
     # Prepare the player's features for prediction
@@ -101,12 +98,11 @@ def main():
         model = train_model(X_train, y_train, model_path)
     
     # Get prediction for a specific player
-    first_name = input("Enter player's first name: ")
-    last_name = input("Enter player's last name: ")
+    first_name = input("enter player name")
     
-    prediction = predict_salary(model, df, first_name, last_name)
+    prediction = predict_salary(model, df, first_name)
     if prediction:
-        print(f"Predicted Salary for {first_name} {last_name}: ${prediction:,.2f}")
+        print(f"Predicted Salary for {first_name}: ${prediction:,.2f}")
         return prediction
 
 # Run the main function
