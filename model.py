@@ -7,6 +7,8 @@ from sklearn.ensemble import RandomForestRegressor
 
 url = 'https://raw.githubusercontent.com/SilvioManfredDante/434_project/main/IceHockey2023VsSalaryVsPlayer.csv'
 
+print('hello world')
+
 def load_and_preprocess_data(url):
     # Load the dataset
     df = pd.read_csv(url)
